@@ -10,3 +10,10 @@ Profile settings
 Notifications
 
 Extra features:
+- post a story (post a video or picture that last exactly 24 hours)
+- hashtags when you post a pic (with those hashtags people around the world can notice your picture with that hastag)
+- filters when you post a picture
+- messages
+- delete picture
+- edit picture
+- location tagging

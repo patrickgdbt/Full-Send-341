@@ -1,0 +1,12 @@
+Core:
+
+Register
+Login
+Upload picture
+Like picture (react to picture)
+Comment on picture
+Follow user
+Profile settings
+Notifications
+
+Extra features:

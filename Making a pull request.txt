@@ -1,10 +1,10 @@
-Steps to creating a branch, and making a pull reuest (PR):
+Steps to creating a branch, and making a pull request (PR):
 -----------------------------------------------------
 1. git checkout master ----> make sure you are on the master branch
 
 2. git pull ----> pulls the most recent version of master so your new branch is up to date
 
-3. git branch <branch name> ----> create a new branch with format Name/<current task> ex: Patrick/login-feature
+3. git branch <branch name> ----> create a new branch with format: Name/<current task> ex: Patrick/login-feature
 
 4. git checkout <branch name> ----> checkout your newly created branch
 

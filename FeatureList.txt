@@ -1,13 +1,12 @@
 Core:
-
-Register
-Login
-Upload picture
-Like picture (react to picture)
-Comment on picture
-Follow user
-Profile settings
-Notifications
+- Register
+- Login
+- Upload picture
+- Like picture (react to picture)
+- Comment on picture
+- Follow user
+- Profile settings
+- Notifications
 
 Extra features:
 - post a story (post a video or picture that last exactly 24 hours)

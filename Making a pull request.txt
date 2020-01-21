@@ -20,7 +20,7 @@ Steps to creating a branch, and making a pull reuest (PR):
 
 10. in github, make a pull request (branches > active branches > <branch name> > New pull request)
 
-11. when done with branch, delete it 
+11. when done with branch (PR HAS BEEN MERGED INTO MASTER), delete it 
 	- delete it locally using: git branch -d <branch name>
 	- delete remote branch in github "branches" section
 -----------------------------------------------------

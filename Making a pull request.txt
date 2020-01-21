@@ -1,0 +1,35 @@
+Steps to creating a branch, and making a pull reuest (PR):
+-----------------------------------------------------
+1. git checkout master ----> make sure you are on the master branch
+
+2. git pull ----> pulls the most recent version of master so your new branch is up to date
+
+3. git branch <branch name> ----> create a new branch with format Name/<current task> ex: Patrick/login-feature
+
+4. git checkout <branch name> ----> checkout your newly created branch
+
+5. *make changes*
+
+6. git add . ----> stage all changes
+
+7. git status ----> check current branch status
+
+8. git commit -m "<commit description>" ----> commit changes to local branch
+
+9. git push origin <branch name> ----> pushes changes to your remote branch to be merged into master
+
+10. in github, make a pull request (branches > active branches > <branch name> > New pull request)
+
+11. when done with branch, delete it 
+	- delete it locally using: git branch -d <branch name>
+	- delete remote branch in github "branches" section
+-----------------------------------------------------
+
+*step 3 & 4 can be combined into a single command:
+	git checkout -b <branch name>
+this creates a new branch and switches to it
+
+*if you wish to only stage some files (not all):
+	git add <file name>
+
+

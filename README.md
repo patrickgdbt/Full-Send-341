@@ -4,7 +4,7 @@
 * Basile Fengos - BasileF
 * Chris Sotirakos - greekspartanx99
 * Michael Nareg Arabian - aramich100
-* Adam Richard - TBD
+* Adam Richard - arich94
 
 ### Languages & Techniques (Tentative)
 ##### Front-End

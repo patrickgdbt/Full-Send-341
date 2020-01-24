@@ -16,4 +16,4 @@ Extra features:
 - delete picture
 - edit picture
 - location tagging
-- determine if user is fullSending or not
+- determine if user is fullSending or not!!!

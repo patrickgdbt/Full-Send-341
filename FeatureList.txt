@@ -2,13 +2,14 @@ Core:
 - Register
 - Login
 - Upload picture
-- Like picture (react to picture)
 - Comment on picture
 - Follow user
-- Profile settings
+- Profile page
 - Notifications
 
 Extra features:
+- Like picture (react to picture)
+- Profile settings
 - post a story (post a video or picture that last exactly 24 hours)
 - hashtags when you post a pic (with those hashtags people around the world can notice your picture with that hastag)
 - filters when you post a picture

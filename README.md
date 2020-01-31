@@ -1,4 +1,19 @@
 # Full-Send-341
+### Description
+Full Send will serve as a clone of the popular social media app, Instagram. The web app will allow users to create accounts, post images, comment on posts, follow other users, etc. In addition to the core features users may also be able to hashtag images, post stories, etc. Full Send will connect members within the community around you via images.
+
+### Objective
+The objective of this app is to connect people around the world through the posting and sharing of images.
+
+### Core Features
+* Register
+* Login
+* Upload picture
+* Comment on picture
+* Follow user
+* Profile page
+* Notifications
+
 ### Team Members (Real name - GitHub username)
 * Patrick Godbout - patrickgdbt
 * Basile Fengos - BasileF
@@ -19,7 +34,3 @@
 
 ##### Database
 * MongoDB
-
-
-Description:
-This web app we are building as team is to serve and rennact the well known Instagram app. The web app will serve as a social media web app that will allow you to post pictures, follow your family and friends, etc. Our objective of this web app we are building is not just to upload pictures/videos there is more to it. Our web app will serve to be able to connect with the community and friends around you and to show them what you are doing.

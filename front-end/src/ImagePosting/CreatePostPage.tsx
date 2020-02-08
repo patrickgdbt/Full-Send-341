@@ -36,7 +36,7 @@ export default class CreatePostPage extends React.Component<any, any>{
                 <PhotoCaption updateCaptionState = {this.updateCaptionState}/>
                 <button 
                  onClick = {this.fileUploadHandler}
-                 disabled = {this.fileInput != null ? false : true}>
+                 disabled = {this.state.image != null ? false : true}>
                      Upload Photo
                 </button>
             </div>

@@ -1,48 +1,37 @@
 import React from 'react';
+import CSS from 'csstype';
 
-export default class UserInfo extends React.Component{
+export default class UserInfo extends React.Component<InfoProps, InfoState>{
+    constructor(props: any){
+        super(props);
+        this.state = {username: "User Name", followerCount: 23, followingCount: 46};
+    }
+    
     render(){
         return(
-                    <table>
-                        <tr>
-                            <td colSpan={2}><UserName/></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <Followers/>
-                            </td>
-                            <td>
-                                <Following/>
-                            </td>
-                        </tr>
-                    </table>
+            <div>
+                <table>
+                    <tr>
+                        <td colSpan={2}>Username: {this.state.username}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Followers: {this.state.followerCount}
+                        </td>
+                        <td>
+                            Following: {this.state.followingCount}
+                        </td>
+                    </tr>
+                </table>
+            </div>
         );
     }
 }
 
-class UserName extends React.Component{
-    name = "User Name";
-    render(){
-        return(
-        <div>User Name: {this.name}</div>
-        );
-    }
-}
+interface InfoProps{}
 
-class Followers extends React.Component{
-    followerCount = 23;
-    render(){
-        return(
-            <div>Followers: {this.followerCount}</div>
-        );
-    }
-}
-
-class Following extends React.Component{
-    followingCount = 46;
-    render(){
-        return(
-            <div>Following: {this.followingCount}</div>
-        );
-    }
+interface InfoState{
+    username: string,
+    followerCount: number,
+    followingCount: number
 }

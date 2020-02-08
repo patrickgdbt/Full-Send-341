@@ -7,15 +7,10 @@ export default class SelectPhoto extends React.Component<any, any>{
         super(props);
 
         this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
-        this.fileUploadHandler = this.fileUploadHandler.bind(this);
     }
 
     fileSelectedHandler(e: any){
         this.props.updateImageState(URL.createObjectURL(e.target.files[0]));
-    }
-
-    fileUploadHandler = () =>{
-
     }
 
     render(){
@@ -28,11 +23,6 @@ export default class SelectPhoto extends React.Component<any, any>{
                  style = {{display: 'none'}}
                  ref = {fileInput => this.fileInput = fileInput}/>
                 <button onClick = {() => this.fileInput.click()}>Select a photo</button>
-                <button 
-                 onClick = {this.fileUploadHandler}
-                 disabled = {this.fileInput != null ? false : true}>
-                     Upload Photo
-                </button>
                 <br />
             </div>
         );

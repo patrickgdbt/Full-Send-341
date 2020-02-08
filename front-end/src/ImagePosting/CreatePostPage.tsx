@@ -32,13 +32,14 @@ export default class CreatePostPage extends React.Component<any, any>{
         return (
             <div>
                 <SelectPhoto updateImageState = {this.updateImageState} />
-                <img src = {this.state.image} alt = {this.state.image == null ? '' : 'Unable to display your photo'} />
                 <PhotoCaption updateCaptionState = {this.updateCaptionState}/>
                 <button 
                  onClick = {this.fileUploadHandler}
                  disabled = {this.state.image != null ? false : true}>
                      Upload Photo
                 </button>
+                <br />
+                <img src = {this.state.image} alt = {this.state.image == null ? '' : 'Unable to display your photo'} />
             </div>
         );
     }

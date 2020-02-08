@@ -16,6 +16,7 @@ export default class PhotoCaption extends React.Component<any, any>{
             <input 
              type = 'text' 
              maxLength = {300}
+             placeholder = "Caption"
              onChange = {this.handleCaptionChange}/>
         )
     }

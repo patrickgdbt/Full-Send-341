@@ -10,7 +10,7 @@ export default class SelectPhoto extends React.Component<any, any>{
     }
 
     fileSelectedHandler(e: any){
-        this.props.updateImageState(URL.createObjectURL(e.target.files[0]));
+        this.props.updateImageStates(e.target.files[0], URL.createObjectURL(e.target.files[0]));
     }
 
     render(){

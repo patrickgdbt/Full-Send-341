@@ -11,7 +11,6 @@ export default class CreatePostPage extends React.Component<any, any>{
             image: null,
             displayImageURL: '',
             imageURL: '',
-            progress: 0,
             caption: '',
         }
 

@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - front-end/node_modules
+script:
+  - cd front-end
+  - npm install react-scripts
+  - npm --passWithNoTests test
+on:
+  branch: master

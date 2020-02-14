@@ -33,19 +33,19 @@ export default class CreatePostPage extends React.Component<any, any>{
     fileUploadHandler = () =>{
         const {image} = this.state;
         console.log(image);
-        const uploadTask = storage.ref('images/' + image.name).put(image);
-        uploadTask.on('state_changed', 
-        () => {
-        },
-        (error) => {
-            console.log(error);
-        }, 
-        () => {
-            storage.ref('images').child(image.name).getDownloadURL().then(url => {
-                this.setState({imageURL: url});
-            });
-            console.log('Image successfully uploaded to firebase');
-        });
+        //const uploadTask = storage.ref('images/' + image.name).put(image);
+        //uploadTask.on('state_changed', 
+        //() => {
+        //},
+        //(error) => {
+        //    console.log(error);
+        //}, 
+        //() => {
+        //    storage.ref('images').child(image.name).getDownloadURL().then(url => {
+        //        this.setState({imageURL: url});
+        //    });
+        //console.log('Image successfully uploaded to firebase');
+        //});
     }
 
     render(){

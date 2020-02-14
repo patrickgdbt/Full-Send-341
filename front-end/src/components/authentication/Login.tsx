@@ -12,6 +12,13 @@ export default class Login extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const app = this.context as FirebaseRequirements;
+    app.auth.onAuthStateChanged(user => {
+      this.forceUpdate();
+    });
+  }
+
   handleSubmit(e: React.FormEvent<Element>) {
     e.preventDefault();
 
@@ -20,9 +27,7 @@ export default class Login extends React.Component {
     const pass = data.get('password') as string;
 
     const app = this.context as FirebaseRequirements;
-    console.log(app.auth.currentUser);
     app.auth.signInWithEmailAndPassword(email, pass).catch(err => console.log(err));
-    this.forceUpdate();
   }
 
   render() {

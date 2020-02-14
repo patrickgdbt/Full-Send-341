@@ -12,6 +12,13 @@ export default class Register extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const app = this.context as FirebaseRequirements;
+    app.auth.onAuthStateChanged(user => {
+      this.forceUpdate();
+    });
+  }
+
   handleSubmit(e: React.FormEvent<Element>) {
     e.preventDefault();
 
@@ -27,8 +34,7 @@ export default class Register extends React.Component {
           .child(user.user?.uid + '/displayName')
           .set(dName);
 
-        user.user?.updateProfile({ displayName: dName })
-          .then(res => this.forceUpdate());
+        user.user?.updateProfile({ displayName: dName });
       });
   }
 

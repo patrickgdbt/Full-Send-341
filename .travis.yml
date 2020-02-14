@@ -6,7 +6,7 @@ cache:
     - front-end/node_modules
 script:
   - cd front-end
-  - npm install react-scripts
+  - npm install
   - npm --passWithNoTests test
 on:
   branch: master

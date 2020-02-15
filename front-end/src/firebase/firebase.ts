@@ -2,14 +2,14 @@ import firebase from 'firebase';
 import { FirebaseRequirements } from '../interfaces/common';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAgZ18Ej-pAlyGs4dNZQxybbOACSfwwX64",
-  authDomain: "full-send-320ae.firebaseapp.com",
-  databaseURL: "https://full-send-320ae.firebaseio.com",
-  projectId: "full-send-320ae",
-  storageBucket: "full-send-320ae.appspot.com",
-  messagingSenderId: "179682784328",
-  appId: "1:179682784328:web:c2ff752fb758cc17b0547d",
-  measurementId: "G-6W4W8ESY0V"
+  apiKey: "AIzaSyBcYYSRlhamtNe1WUyIPwU4Vg014M_wqtQ",
+  authDomain: "fullsend-a5aeb.firebaseapp.com",
+  databaseURL: "https://fullsend-a5aeb.firebaseio.com",
+  projectId: "fullsend-a5aeb",
+  storageBucket: "fullsend-a5aeb.appspot.com",
+  messagingSenderId: "822893122219",
+  appId: "1:822893122219:web:3985856ee93c59ae945dee",
+  measurementId: "G-HR6HLQMB6W"
 };
 
 class Firebase implements FirebaseRequirements {

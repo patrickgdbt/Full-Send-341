@@ -6,7 +6,7 @@ import { FirebaseRequirements } from '../../interfaces/common';
 
 export default class CreatePostPage extends React.Component<any, any>{
 	constructor(props: any) {
-		super(props);
+    super(props);
 
 		this.state = {
 			image: null,
@@ -32,6 +32,7 @@ export default class CreatePostPage extends React.Component<any, any>{
 	}
 
 	fileUploadHandler = () => {
+    const uuidv4 = require('uuid/v4');
 		const { image } = this.state;
 		console.log(image);
 		const app = this.context as FirebaseRequirements;
@@ -39,9 +40,10 @@ export default class CreatePostPage extends React.Component<any, any>{
 		const db = app.db;
 		const currentUser = app.auth.currentUser;
 		const currentUserID = currentUser?.uid as string;
-		const currentUserDisplayName = currentUser?.displayName as string;
+    const currentUserDisplayName = currentUser?.displayName as string;
+    const imageID = uuidv4();
 
-		storage.ref('images/' + image.name).put(image).then(
+		storage.ref('images/' + imageID).put(image).then(
 			() => {
 				storage.ref('images').child(image.name).getDownloadURL().then(url => {
           this.setState({ imageDownloadURL: url });

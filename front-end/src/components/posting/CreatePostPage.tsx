@@ -45,21 +45,21 @@ export default class CreatePostPage extends React.Component<any, any>{
 
 		storage.ref('images/' + imageID).put(image).then(
 			() => {
-				storage.ref('images').child(imageID).getDownloadURL().then(url => {
-					this.setState({ imageDownloadURL: url });
+				storage.ref('images').child(image.name).getDownloadURL().then(url => {
+          this.setState({ imageDownloadURL: url });
+          
+          db.ref('posts')
+          .push({
+            imageURL: this.state.imageDownloadURL,
+            userID: currentUserID,
+            userName: currentUserDisplayName,
+            caption: this.state.caption,
+            commentCount: 0,
+          })
+          .then((snap) => {
+            db.ref('users').child(currentUserID).child('posts').push(snap.key);
+          });
 				});
-
-				db.ref('posts')
-					.push({
-						imageURL: this.state.displayImageURL,
-						userID: currentUserID,
-						userName: currentUserDisplayName,
-						caption: this.state.caption,
-						commentCount: 0,
-					})
-					.then((snap) => {
-						db.ref('users').child(currentUserID).child('posts').push(snap.key);
-					});
 			});
 	}
 

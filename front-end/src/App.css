@@ -1,18 +1,40 @@
 
 
+
+
+
 .App {
   text-align: center;
+  
+
+}
+
+body{
+ 
+  background-image: url(/photo8.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+  
+  
+    
+  
+}
+
+h1{
+  background-color: darkorange;
 }
 
 .App-header {
-  background-color: #342828;
+  
+  background-color: #be0c0c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(113, 113, 122);
 }
 
 

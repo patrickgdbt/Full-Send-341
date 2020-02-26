@@ -1,41 +1,35 @@
 import React from 'react';
+import FirebaseContext from '../../firebase/context';
+import { FirebaseRequirements } from '../../interfaces/common';
 
 
-function FullSend() {
 
-var isf = false;
+export default class followComponent extends React.Component {
 
-    function follow()
-    {
+    followCheckkkk() {
+        const app = this.context as FirebaseRequirements;
+        //Add current username to targets followers list
+        app.db.ref("users/followers").push
+        console.log("added to followers")
 
-        if(isf===false)
-        {
-            
-            //Not Following
-
-            //Follow
-            isf = true;
-        }
+        //Adds targets username to current followings list
+        app.db.ref("users/following").push
+        console.log("added to following")
 
     }
 
-    function unfollow()
-    {
-        if(isf===true)
-        {
-            //Following
-
-            //Unfollow
-            isf = false;
-        }
+    componentDidMount() {
+        
     }
 
-    return(
-        <button onClick={isf ? unfollow : follow}>
-        {isf ? 'Unfollow' : 'Follow'}
-        </button>
-
-    );
+    render() {
+        return (
+            <div>
+                <button onClick={this.followCheckkkk}>
+                    {"Follow"}
+                </button>
+            </div>
+        )
+    }
 }
-
-export default FullSend;
+followComponent.contextType = FirebaseContext;

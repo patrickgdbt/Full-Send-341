@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProfileStyle.css';
 
 export default class ProfilePosts extends React.Component<UserProps, UserState>{
   constructor(props: any) {

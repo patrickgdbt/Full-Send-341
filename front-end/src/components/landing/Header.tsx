@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    header: {
+      color: 'red',
+      backgroundColor: 'white',
+    },
   }),
 );
 
@@ -18,7 +22,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.header}>
         <Toolbar variant="dense">
           <Typography variant="h6" className={classes.title}>
             FULL SEND

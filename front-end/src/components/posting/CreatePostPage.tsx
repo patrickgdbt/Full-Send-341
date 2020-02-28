@@ -45,7 +45,7 @@ export default class CreatePostPage extends React.Component<any, any>{
 
 		storage.ref('images/' + imageID).put(image).then(
 			() => {
-				storage.ref('images').child(image.name).getDownloadURL().then(url => {
+				storage.ref('images').child(imageID).getDownloadURL().then(url => {
           this.setState({ imageDownloadURL: url });
           
           db.ref('posts')

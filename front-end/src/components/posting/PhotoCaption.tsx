@@ -1,23 +1,22 @@
 import React from 'react';
+import { Grid, TextField } from '@material-ui/core';
 
-export default class PhotoCaption extends React.Component<any, any>{
-  constructor(props: any) {
-    super(props);
+interface PhotoCaptionProps {
+  updateCaptionState: (e: any) => void;
+}
 
-    this.handleCaptionChange = this.handleCaptionChange.bind(this);
-  }
-
-  handleCaptionChange(e: any) {
-    this.props.updateCaptionState(e.target.value);
-  }
-
-  render() {
-    return (
-      <input
-        type='text'
-        maxLength={300}
-        placeholder="Caption"
-        onChange={this.handleCaptionChange} />
-    )
-  }
+export default function PhotoCaption(props: PhotoCaptionProps) {
+  return (
+    <Grid item xs={12} sm={12} style={{ marginBottom: '20px' }}>
+      <Grid container justify='center'>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            type='text'
+            placeholder='Enter a caption'
+            fullWidth
+            onChange={(e) => props.updateCaptionState(e.target.value)} />
+        </Grid>
+      </Grid>
+    </Grid>
+  )
 }

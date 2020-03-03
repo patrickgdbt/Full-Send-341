@@ -8,7 +8,6 @@ interface FeedProps {
 }
 
 export default function Feed(props: FeedProps) {
-  console.log(props.posts)
   return (
     <Grid item xs={10} sm={12}>
       <Grid container direction='column' justify='center' alignItems='center'>

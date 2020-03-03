@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
-      marginBottom: 30,
+      marginBottom: 20,
+      textAlign: 'left'
     },
     media: {
       height: 0,
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface PostProps {
   postData: IPost;
+  preview?: boolean;
 }
 
 export default function Post(props: PostProps) {
@@ -55,7 +57,7 @@ export default function Post(props: PostProps) {
         <CardHeader
           avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-              T
+              {postData.userName ? postData.userName.charAt(0).toUpperCase() : ''}
             </Avatar>
           }
           action={
@@ -63,11 +65,11 @@ export default function Post(props: PostProps) {
               <MoreVertIcon />
             </IconButton>
           }
-          title={postData.userName}
+          title={props.preview ? postData.userName + ' (PREVIEW)' : postData.userName}
         />
         <CardMedia
           className={classes.media}
-          image={postData.imageURL + ''}
+          image={postData.imageURL ? postData.imageURL : 'placeholder'}
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -75,11 +77,17 @@ export default function Post(props: PostProps) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="like">
+          <IconButton
+            aria-label="like"
+            disabled={props.preview}  
+          >
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="comment" onClick={handleExpandClick}
-            aria-expanded={expanded}>
+          <IconButton aria-label="comment"
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            disabled={props.preview}
+          >
             <ChatBubbleOutlineIcon />
           </IconButton>
           <IconButton
@@ -87,6 +95,7 @@ export default function Post(props: PostProps) {
               [classes.expandOpen]: expanded,
             })}
             onClick={handleExpandClick}
+            disabled={props.preview}
             aria-expanded={expanded}
             aria-label="show more"
           >

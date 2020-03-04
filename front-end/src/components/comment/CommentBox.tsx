@@ -6,6 +6,7 @@ import SendIcon from '@material-ui/icons/Send';
 import FirebaseContext from "../../firebase/context";
 
 interface CommentsProps {
+  postAuthorID: string;
   postID: string;
   comments: IComment[];
 }
@@ -17,7 +18,7 @@ interface CommentsState {
 export default class CommentBox extends React.Component<CommentsProps, CommentsState> {
   constructor(props: CommentsProps) {
     super(props);
-    
+
     this.state = {
       comments: props.comments
     }
@@ -30,9 +31,22 @@ export default class CommentBox extends React.Component<CommentsProps, CommentsS
       userID: app.auth.currentUser?.uid,
       userName: app.auth.currentUser?.displayName,
     } as IComment;
-    
-    app.db.ref('posts/' + this.props.postID + '/comments').push(newComment);
-    
+
+    app.db.ref('posts/' + this.props.postID + '/comments').push(newComment)
+      .then(val => {
+        if (this.props.postAuthorID !== app.auth.currentUser?.uid) {
+          app.db.ref('users/' + this.props.postAuthorID + '/newNotifs').once('value', newNotifs => {
+            app.db.ref('users/' + this.props.postAuthorID + '/newNotifs').set(newNotifs.val() + 1);
+          });
+
+          app.db.ref('users/' + this.props.postAuthorID + '/notifs').push({
+            type: 'comment',
+            userID: app.auth.currentUser?.uid,
+            userName: app.auth.currentUser?.displayName,
+          });
+        }
+      });
+
     const comments = this.state.comments;
     comments.push(newComment);
     this.setState({
@@ -45,7 +59,7 @@ export default class CommentBox extends React.Component<CommentsProps, CommentsS
       <Grid container direction='column'>
         <Grid item sm={12} style={{ overflow: 'auto', maxHeight: '123px' }}>
           <Grid container direction='column'>
-            {this.state.comments.map((c,i) => <Comment key={i} comment={c} />)}
+            {this.state.comments.map((c, i) => <Comment key={i} comment={c} />)}
           </Grid>
         </Grid>
         <Divider style={{ marginTop: '10px', marginBottom: '10px' }} />

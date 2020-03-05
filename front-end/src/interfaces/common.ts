@@ -19,4 +19,10 @@ export interface IComment {
   comment: string;
 }
 
+export interface INotification {
+  userID: string;
+  userName: string;
+  type: string;
+}
+
 export interface NoProps { }

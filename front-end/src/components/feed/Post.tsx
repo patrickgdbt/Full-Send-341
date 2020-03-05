@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles, Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Typography, Grid } from '@material-ui/core';
 import clsx from 'clsx';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -31,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-      backgroundColor: red[500],
     },
   }),
 );
@@ -105,6 +103,7 @@ export default function Post(props: PostProps) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent style={{paddingTop: '0px', paddingBottom: '10px'}}>
             <CommentBox 
+              postAuthorID={postData.userID}
               postID={postData.postID}
               comments={postData.comments}
             />

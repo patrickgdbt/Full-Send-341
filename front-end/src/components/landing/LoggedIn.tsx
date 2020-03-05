@@ -7,6 +7,7 @@ import { Grid, Button, Dialog, Slide, AppBar, Toolbar, Typography, makeStyles, c
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
+import Header from './Header';
 
 interface LoggedInState {
   posts: IPost[];
@@ -29,7 +30,7 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
 
     app.db.ref('posts').once('value', snapshot => {
       const root = snapshot.val();
-      
+
       for (var key in root) {
         const post = root[key];
         const comments = [] as IComment[];
@@ -56,39 +57,42 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
 
   render() {
     return (
-      <Grid 
-        container 
-        justify='center'
-        style={{backgroundColor: '#ececec'}}
-      >
-        <Grid item xs={10} sm={6}>
-          <Button
-            variant='contained'
-            fullWidth
-            style={{
-              marginTop: '20px',
-              marginBottom: '20px',
-              backgroundColor: 'white',
-            }}
-            onClick={() => {this.setState({open: true})}}
-          >
-            <AddIcon style={{color: 'red'}} />
-          </Button>
-        </Grid>
-        <Feed 
-          posts={this.state.posts}
-        />
-        <Dialog 
-          fullScreen
-          open={this.state.open}
-          onClose={() => {this.setState({open: false})}}
-          TransitionComponent={Transition}
-          PaperProps={{style: {backgroundColor: '#ececec'}}}
+      <div>
+        <Header />
+        <Grid
+          container
+          justify='center'
+          style={{ backgroundColor: '#ececec' }}
         >
-          <PostingHeader close={() => {this.setState({open: false})}}/>
-          <CreatePostPage close={() => {this.setState({open: false})}} />
-        </Dialog>
-      </Grid>
+          <Grid item xs={10} sm={6}>
+            <Button
+              variant='contained'
+              fullWidth
+              style={{
+                marginTop: '20px',
+                marginBottom: '20px',
+                backgroundColor: 'white',
+              }}
+              onClick={() => { this.setState({ open: true }) }}
+            >
+              <AddIcon style={{ color: 'red' }} />
+            </Button>
+          </Grid>
+          <Feed
+            posts={this.state.posts}
+          />
+          <Dialog
+            fullScreen
+            open={this.state.open}
+            onClose={() => { this.setState({ open: false }) }}
+            TransitionComponent={Transition}
+            PaperProps={{ style: { backgroundColor: '#ececec' } }}
+          >
+            <PostingHeader close={() => { this.setState({ open: false }) }} />
+            <CreatePostPage close={() => { this.setState({ open: false }) }} />
+          </Dialog>
+        </Grid>
+      </div>
     );
   }
 }

@@ -31,8 +31,11 @@ export default class Register extends React.Component {
     app.auth.createUserWithEmailAndPassword(email, pass)
       .then((user: firebase.auth.UserCredential) => {
         app.db.ref('users')
-          .child(user.user?.uid + '/displayName')
-          .set(dName);
+          .child(user.user!.uid)
+          .set({
+            displayName: dName,
+            newNotifs: 0,
+          });
 
         user.user?.updateProfile({ displayName: dName });
       });

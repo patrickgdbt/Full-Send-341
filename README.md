@@ -34,5 +34,5 @@ The objective of this app is to connect people around the world through the post
 ##### Database
 * Firebase
 
-##### Block Diagram
-![Screenshot](Block Diagram.png)
+### Block Diagram
+![Alt text](https://github.com/BasileF/Full-Send-341/blob/master/Block%20Diagram.png?raw=true)

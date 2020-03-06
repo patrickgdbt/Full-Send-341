@@ -33,3 +33,6 @@ The objective of this app is to connect people around the world through the post
 
 ##### Database
 * Firebase
+
+##### Block Diagram
+![Screenshot](Block Diagram.png)

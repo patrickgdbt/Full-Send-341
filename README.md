@@ -27,10 +27,6 @@ The objective of this app is to connect people around the world through the post
 * CSS
 * HTML
 
-##### Back-End
-* Node.js
-* Express.js
-
 ##### Database
 * Firebase
 

@@ -6,6 +6,7 @@ import Register from './components/authentication/Register';
 import LandingPage from './components/landing/LandingPage';
 import FirebaseContext from './firebase/context';
 import Firebase from './firebase/firebase';
+import ProfilePage from './components/profile/ProfilePage';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/register'>
             <Register />
           </Route>
+          <Route exact path='/users/:id' component={ProfilePage}/>
           <Route path='/'>
             <LandingPage />
           </Route>

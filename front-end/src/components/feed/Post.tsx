@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme: Theme) =>
     expandOpen: {
       transform: 'rotate(180deg)',
     },
-    avatar: {
+    icon: {
+      position: 'inherit'
     },
   }),
 );
@@ -48,13 +49,13 @@ export default function Post(props: PostProps) {
   };
 
   const postData = props.postData;
-  
+
   return (
     <Grid item className={classes.root} sm={6}>
       <Card>
         <CardHeader
           avatar={
-            <Avatar aria-label="recipe" className={classes.avatar}>
+            <Avatar aria-label="recipe" className={classes.icon}>
               {postData.userName ? postData.userName.charAt(0).toUpperCase() : ''}
             </Avatar>
           }
@@ -77,7 +78,7 @@ export default function Post(props: PostProps) {
         <CardActions disableSpacing>
           <IconButton
             aria-label="like"
-            disabled={props.preview}  
+            disabled={props.preview}
           >
             <FavoriteIcon />
           </IconButton>
@@ -101,8 +102,8 @@ export default function Post(props: PostProps) {
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent style={{paddingTop: '0px', paddingBottom: '10px'}}>
-            <CommentBox 
+          <CardContent style={{ paddingTop: '0px', paddingBottom: '10px' }}>
+            <CommentBox
               postAuthorID={postData.userID}
               postID={postData.postID}
               comments={postData.comments}

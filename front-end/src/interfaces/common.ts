@@ -4,24 +4,23 @@ export interface FirebaseRequirements {
   storage: firebase.storage.Storage;
 }
 
-export interface IPost {
+export interface IBasicUser {
+  userID: string;
+  userName: string;
+}
+
+export interface IPost extends IBasicUser{
   postID: string;
   caption: string;
   imageURL: string;
-  userID: string;
-  userName: string;
   comments: IComment[];
 }
 
-export interface IComment {
-  userID: string;
-  userName: string;
+export interface IComment extends IBasicUser {
   comment: string;
 }
 
-export interface INotification {
-  userID: string;
-  userName: string;
+export interface INotification extends IBasicUser {
   type: string;
 }
 

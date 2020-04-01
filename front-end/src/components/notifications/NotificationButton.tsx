@@ -90,7 +90,7 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
             </List>
             <Divider />
             <List style={{ padding: '0px' }}>
-              {this.state.notifs.map((n: INotification, i: number, arr: INotification[]) => <Notification notifData={arr[arr.length - i - 1]}/>)}
+              {this.state.notifs.map((n: INotification, i: number, arr: INotification[]) => <Notification key={i} notifData={arr[arr.length - i - 1]}/>)}
             </List>
           </div>
         </Drawer>

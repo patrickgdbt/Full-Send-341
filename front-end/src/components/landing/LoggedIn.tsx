@@ -72,6 +72,7 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
                 marginTop: '20px',
                 marginBottom: '20px',
                 backgroundColor: 'white',
+                position: 'inherit',
               }}
               onClick={() => { this.setState({ open: true }) }}
             >
@@ -86,7 +87,7 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
             open={this.state.open}
             onClose={() => { this.setState({ open: false }) }}
             TransitionComponent={Transition}
-            PaperProps={{ style: { backgroundColor: '#ececec' } }}
+            PaperProps={{ style: { backgroundColor: '#ececec', } }}
           >
             <PostingHeader close={() => { this.setState({ open: false }) }} />
             <CreatePostPage close={() => { this.setState({ open: false }) }} />

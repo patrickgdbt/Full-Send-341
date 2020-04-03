@@ -10,11 +10,11 @@
 }
 
 body{
- 
-  background-image: url(/photo8.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
- 
+ /*background color*/
+ background: #8A2387; 
+background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387); 
+background: linear-gradient(to right, #F27121, #E94057, #8A2387); 
+
   
   
     

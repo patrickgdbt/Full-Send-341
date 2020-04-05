@@ -1,6 +1,6 @@
-table, tbody, td {
+#purpletheme {
     color: white;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     font-size: 24pt;
     border: 2px solid white;
@@ -8,17 +8,12 @@ table, tbody, td {
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    border-radius: 10px;
+    border-spacing: 6px;
 }
 
-li, ul {
-    list-style-type: none;
-    color: white;
-    padding: 10px;
-    border: 1px solid white;
-    text-align: center;
-    background-color: rgb(53, 0, 73);
+#maintable{
     margin: 0 auto;
-    margin-bottom: 10px;
-    width: 1000px;
-    
+    padding: 20px;
+    text-align: center;
 }

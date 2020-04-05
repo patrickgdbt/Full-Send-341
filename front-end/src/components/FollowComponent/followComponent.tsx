@@ -2,6 +2,7 @@ import React from 'react';
 import * as firebase from 'firebase'
 import FirebaseContext from '../../firebase/context';
 import { FirebaseRequirements } from '../../interfaces/common';
+import './follow.css';
 
 export default class FollowComponent extends React.Component<any, any> {
 
@@ -77,7 +78,7 @@ export default class FollowComponent extends React.Component<any, any> {
         <FirebaseContext.Consumer>
           {app =>
             app?.auth.currentUser?.uid !== this.props.profileID &&
-            <button onClick={() => { this.changeFollowStatus() }} >
+            <button id="purplebutton" onClick={() => { this.changeFollowStatus() }} >
               {this.props.followers.includes(app?.auth.currentUser?.uid) ? "Unfollow" : "Follow"}
             </button>
           }

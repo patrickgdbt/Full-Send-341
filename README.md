@@ -21,7 +21,7 @@ The objective of this app is to connect people around the world through the post
 * Michael Nareg Arabian - aramich100
 * Adam Richard - arich94
 
-### Languages & Techniques (Tentative)
+### Languages & Techniques 
 ##### Front-End
 * React
 * CSS

@@ -1,8 +1,7 @@
 import React from 'react';
 import { FirebaseRequirements } from '../../interfaces/common';
 import FirebaseContext from '../../firebase/context';
-import FollowComponent from '../followComponent/FollowComponent';
-import FollowComponent from '../followComponent/FollowComponent';
+import FollowButton from '../follow/FollowButton';
 
 export default class UserInfo extends React.Component<any, any>{
 
@@ -77,7 +76,7 @@ export default class UserInfo extends React.Component<any, any>{
           </tbody>
           <tbody>
             <td id="maintable" colSpan={2}>
-                  <FollowComponent profileID = {this.props.id} followers = {this.state.followers}/>
+                  <FollowButton profileID = {this.props.id} followers = {this.state.followers}/>
             </td>
           </tbody>
         </table>

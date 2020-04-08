@@ -1,10 +1,10 @@
-import React from './node_modules/react';
-import * as firebase from './node_modules/firebase'
+import React from 'react';
+import * as firebase from 'firebase'
 import FirebaseContext from '../../firebase/context';
 import { FirebaseRequirements } from '../../interfaces/common';
 import './follow.css';
 
-export default class FollowComponent extends React.Component<any, any> {
+export default class FollowButton extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
@@ -97,4 +97,4 @@ export default class FollowComponent extends React.Component<any, any> {
     )
   }
 }
-FollowComponent.contextType = FirebaseContext;
+FollowButton.contextType = FirebaseContext;

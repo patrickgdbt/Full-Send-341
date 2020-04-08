@@ -1,5 +1,5 @@
-import React from 'react';
-import * as firebase from 'firebase'
+import React from './node_modules/react';
+import * as firebase from './node_modules/firebase'
 import FirebaseContext from '../../firebase/context';
 import { FirebaseRequirements } from '../../interfaces/common';
 import './follow.css';
@@ -44,6 +44,16 @@ export default class FollowComponent extends React.Component<any, any> {
       profileRef.child('followers').child(this.state.currentUser).set(this.state.currentUser);
       userRef.child('following').child(this.props.profileID).set(this.props.profileID);
       this.props.followers.push(this.state.currentUser);
+
+      app.db.ref('users/' + this.props.profileID + '/newNotifs').once('value', newNotifs => {
+        app.db.ref('users/' + this.props.profileID + '/newNotifs').set(newNotifs.val() + 1);
+      });
+
+      app.db.ref('users/' + this.props.profileID + '/notifs').push({
+        type: 'follow',
+        userID: app.auth.currentUser?.uid,
+        userName: app.auth.currentUser?.displayName,
+      });
     }
     else if (this.state.isFollowing) {
       console.log(this.state.currentUser);

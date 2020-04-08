@@ -68,7 +68,7 @@ export default function SearchBar() {
       />
       <DropDown
         criteria={criteria}
-        showDrop={showDrop}  
+        showDrop={showDrop}
       />
     </div>
   );

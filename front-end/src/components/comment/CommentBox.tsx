@@ -116,7 +116,7 @@ function Comment(props: any) {
   return (
     <Grid item sm={12}>
       <a
-        href={'/users/' + props.comment.userID}
+        href={'/auth/users/' + props.comment.userID}
         style={{
           textDecoration: 'none',
           fontWeight: 'bold',

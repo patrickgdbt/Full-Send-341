@@ -1,19 +1,26 @@
 import React from 'react';
-import './ProfileStyle.css';
 import FirebaseContext from '../../firebase/context';
 import { IPost, FirebaseRequirements, IComment } from '../../interfaces/common';
 import { Grid } from '@material-ui/core';
 import Post from '../feed/Post';
 
+interface UserProps {
+  id: any
+}
+
+interface UserState {
+  posts: IPost[]
+}
+
 export default class ProfilePosts extends React.Component<UserProps, UserState>{
   constructor(props: any) {
     super(props);
-    this.state = { 
+    this.state = {
       posts: []
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const app = this.context as FirebaseRequirements;
     const profileID = this.props.id;
 
@@ -30,14 +37,14 @@ export default class ProfilePosts extends React.Component<UserProps, UserState>{
       const root = snapshot.val();
 
       for (var key in root) {
-        if(postsIDs.includes(key)){
+        if (postsIDs.includes(key)) {
           const post = root[key];
           const comments = [] as IComment[];
-  
+
           for (var comment in post.comments) {
             comments.push(post.comments[comment]);
           }
-  
+
           posts.push({
             postID: key,
             caption: post.caption,
@@ -48,6 +55,7 @@ export default class ProfilePosts extends React.Component<UserProps, UserState>{
           });
         }
       };
+      
       this.setState({
         posts: posts
       });
@@ -56,20 +64,10 @@ export default class ProfilePosts extends React.Component<UserProps, UserState>{
 
   render() {
     return (
-      <div>
-        <Grid container direction='column' justify='center' alignItems='center'>
-          {this.state.posts.map((postData, i, posts) => <Post key={i} postData={posts[posts.length-i-1]} />)}
-        </Grid>
-      </div>
+      <Grid container direction='column' justify='center' alignItems='center'>
+        {this.state.posts.map((postData, i, posts) => <Post key={i} postData={posts[posts.length - i - 1]} />)}
+      </Grid>
     );
   }
 }
 ProfilePosts.contextType = FirebaseContext;
-
-interface UserProps {
-  id: any
- }
-
-interface UserState {
-  posts: IPost[]
-}

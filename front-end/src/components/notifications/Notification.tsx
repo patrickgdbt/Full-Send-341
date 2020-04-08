@@ -7,6 +7,7 @@ interface NotificationProps {
 }
 
 export default function Notification(props: NotificationProps) {
+  const message = props.notifData.type === 'comment' ? 'commented on your post.' : 'followed you.';
   return (
     <Fragment>
       <ListItem button>
@@ -15,13 +16,13 @@ export default function Notification(props: NotificationProps) {
         </ListItemAvatar>
         <div>
           <a
-            href={'/users/' + props.notifData.userID}
+            href={'/auth/users/' + props.notifData.userID}
             style={{
               textDecoration: 'none',
               fontWeight: 'bolder',
               color: 'black'
             }}
-          >{props.notifData.userName} </a>commented on your post.
+          >{props.notifData.userName} </a> { message }
         </div>
       </ListItem>
       <Divider />

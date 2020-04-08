@@ -1,8 +1,8 @@
 import React from 'react';
 import { FirebaseRequirements } from '../../interfaces/common';
 import FirebaseContext from '../../firebase/context';
-import './ProfileStyle.css';
-import FollowComponent from '../FollowComponent/followComponent';
+import FollowComponent from '../followComponent/FollowComponent';
+import FollowComponent from '../followComponent/FollowComponent';
 
 export default class UserInfo extends React.Component<any, any>{
 

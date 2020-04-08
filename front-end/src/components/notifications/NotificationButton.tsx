@@ -28,14 +28,15 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
   componentDidMount() {
     const app = this.context as FirebaseRequirements;
 
-    app.db.ref('users/' + app.auth.currentUser?.uid + '/newNotifs')
+    app.auth.onAuthStateChanged(user => {
+      app.db.ref('users/' + app.auth.currentUser?.uid + '/newNotifs')
       .on('value', snapshot => {
         this.setState({
           newNotifs: snapshot.val(),
         });
       });
 
-    app.db.ref('users/' + app.auth.currentUser?.uid + '/notifs')
+      app.db.ref('users/' + app.auth.currentUser?.uid + '/notifs')
       .on('child_added', snapshot => {
         const notifs = this.state.notifs;
         notifs.push(snapshot.val());
@@ -43,6 +44,9 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
           notifs: notifs,
         });
       });
+
+      this.forceUpdate();
+    });
   }
 
   componentWillUnmount() {
@@ -90,7 +94,7 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
             </List>
             <Divider />
             <List style={{ padding: '0px' }}>
-              {this.state.notifs.map((n: INotification, i: number, arr: INotification[]) => <Notification key={i} notifData={arr[arr.length - i - 1]}/>)}
+              {this.state.notifs.map((n: INotification, i: number, arr: INotification[]) => <Notification key={i} notifData={arr[arr.length - i - 1]} />)}
             </List>
           </div>
         </Drawer>

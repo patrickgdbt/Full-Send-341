@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
     header: {
       color: 'red',
       backgroundColor: 'white',
+      position: 'fixed'
     },
     sectionDesktop: {
       display: 'none',
@@ -36,7 +37,7 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar variant="dense">
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title} onClick={() => window.location.href = '/auth/feed' }>
             FULL SEND
           </Typography>
           <div className={classes.root} />
@@ -47,13 +48,13 @@ export default function Header() {
             <FirebaseContext.Consumer>
               {
                 fb =>
-                  <IconButton aria-label="show 4 new mails" color="inherit" href={'users/' + fb?.auth.currentUser?.uid}>
+                  <IconButton aria-label="show 4 new mails" color="inherit" onClick={() => window.location.href = '/auth/users/' + fb?.auth.currentUser?.uid}>
                     <AccountCircle />
                   </IconButton>
               }
             </FirebaseContext.Consumer>
             <FirebaseContext.Consumer>
-              {fb => <Button color="inherit" onClick={() => fb?.auth.signOut()}>Logout</Button>}
+              {fb => <Button color="inherit" onClick={() => { fb?.auth.signOut(); window.location.href = '/'; } }>Logout</Button>}
             </FirebaseContext.Consumer>
           </div>
         </Toolbar>

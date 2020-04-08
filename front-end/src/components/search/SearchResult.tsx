@@ -9,7 +9,7 @@ interface SearchResultProps {
 export default function SearchResult(props: SearchResultProps) {
   return (
     <div>
-      <ListItem button onClick={() => window.location.href = '/users/' + props.userInfo.userID}>
+      <ListItem button onClick={() => window.location.href = '/auth/users/' + props.userInfo.userID}>
         <ListItemAvatar>
           <Avatar>{props.userInfo.userName.charAt(0).toUpperCase()}</Avatar>
         </ListItemAvatar>
@@ -20,7 +20,7 @@ export default function SearchResult(props: SearchResultProps) {
           }}
         >
           <a
-            href={'/users/' + props.userInfo.userID}
+            href={'/auth/users/' + props.userInfo.userID}
             style={{
               textDecoration: 'none',
               color: 'black',

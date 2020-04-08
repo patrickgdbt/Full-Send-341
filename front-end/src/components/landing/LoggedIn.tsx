@@ -8,6 +8,8 @@ import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import Header from './Header';
+import { Route } from 'react-router-dom';
+import ProfilePage from '../profile/ProfilePage';
 
 interface LoggedInState {
   posts: IPost[];
@@ -28,29 +30,45 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
     const app = this.context as FirebaseRequirements;
     const posts = [] as IPost[];
 
-    app.db.ref('posts').once('value', snapshot => {
-      const root = snapshot.val();
-
-      for (var key in root) {
-        const post = root[key];
-        const comments = [] as IComment[];
-
-        for (var comment in post.comments) {
-          comments.push(post.comments[comment]);
-        }
-
-        posts.push({
-          postID: key,
-          caption: post.caption,
-          imageURL: post.imageURL,
-          userID: post.userID,
-          userName: post.userName,
-          comments: comments,
+    app.auth.onAuthStateChanged(user => {
+      app.db.ref('users/' + app.auth.currentUser?.uid + '/following').once('value', snapshot => {
+        var followingList: any[] = [];
+        snapshot.forEach((child: any) => {
+          followingList.push(child.val());
         });
-      }
 
-      this.setState({
-        posts: posts
+        followingList.push(app.auth.currentUser?.uid);
+
+        console.log(snapshot);
+
+        app.db.ref('posts').once('value', snapshot => {
+          const root = snapshot.val();
+
+          for (var key in root) {
+            const post = root[key] as IPost;
+
+            if (followingList.includes(post.userID)) {
+              const comments = [] as IComment[];
+
+              for (var comment in post.comments) {
+                comments.push(post.comments[comment]);
+              }
+
+              posts.push({
+                postID: key,
+                caption: post.caption,
+                imageURL: post.imageURL,
+                userID: post.userID,
+                userName: post.userName,
+                comments: comments,
+              });
+            }
+          }
+
+          this.setState({
+            posts: posts
+          });
+        });
       });
     });
   }
@@ -59,40 +77,43 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
     return (
       <div>
         <Header />
-        <Grid
-          container
-          justify='center'
-          style={{ backgroundColor: '#ececec' }}
-        >
-          <Grid item xs={10} sm={6}>
-            <Button
-              variant='contained'
-              fullWidth
-              style={{
-                marginTop: '20px',
-                marginBottom: '20px',
-                backgroundColor: 'white',
-                position: 'inherit',
-              }}
-              onClick={() => { this.setState({ open: true }) }}
-            >
-              <AddIcon style={{ color: 'red' }} />
-            </Button>
-          </Grid>
-          <Feed
-            posts={this.state.posts}
-          />
-          <Dialog
-            fullScreen
-            open={this.state.open}
-            onClose={() => { this.setState({ open: false }) }}
-            TransitionComponent={Transition}
-            PaperProps={{ style: { backgroundColor: '#ececec', } }}
+        <Route exact path='/auth/users/:id' component={ProfilePage} />
+        <Route path="/auth/feed">
+          <Grid
+            container
+            justify='center'
+            style={{ paddingTop: '48px' }}
           >
-            <PostingHeader close={() => { this.setState({ open: false }) }} />
-            <CreatePostPage close={() => { this.setState({ open: false }) }} />
-          </Dialog>
-        </Grid>
+            <Grid item xs={10} sm={6}>
+              <Button
+                variant='contained'
+                fullWidth
+                style={{
+                  marginTop: '20px',
+                  marginBottom: '20px',
+                  backgroundColor: 'white',
+                  position: 'inherit',
+                }}
+                onClick={() => { this.setState({ open: true }) }}
+              >
+                <AddIcon style={{ color: 'red' }} />
+              </Button>
+            </Grid>
+            <Feed
+              posts={this.state.posts}
+            />
+            <Dialog
+              fullScreen
+              open={this.state.open}
+              onClose={() => { this.setState({ open: false }) }}
+              TransitionComponent={Transition}
+              PaperProps={{ style: { backgroundColor: '#ececec', } }}
+            >
+              <PostingHeader close={() => { this.setState({ open: false }) }} />
+              <CreatePostPage close={() => { this.setState({ open: false }) }} />
+            </Dialog>
+          </Grid>
+        </Route>
       </div>
     );
   }

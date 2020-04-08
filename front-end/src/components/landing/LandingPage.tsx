@@ -1,7 +1,6 @@
 import React from 'react';
 import FirebaseContext from '../../firebase/context';
 import { FirebaseRequirements } from '../../interfaces/common';
-import LoggedOut from './LoggedOut';
 import LoggedIn from './LoggedIn';
 
 export default class LandingPage extends React.Component {
@@ -15,14 +14,7 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <FirebaseContext.Consumer>
-          {
-            fb => fb?.auth.currentUser ?
-              <LoggedIn />
-              :
-              <LoggedOut />
-          }
-        </FirebaseContext.Consumer>
+        <LoggedIn />
       </div>
     )
   }

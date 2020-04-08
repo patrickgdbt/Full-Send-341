@@ -1,0 +1,9 @@
+#purplebutton {
+    color: white;
+    padding: 15px;
+    font-size: 16pt;
+    border: 2px solid white;
+    background-color: rgb(53, 0, 73);
+    border-radius: 10px;
+    width: 100%;
+}

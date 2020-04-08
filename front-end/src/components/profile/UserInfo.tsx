@@ -2,6 +2,7 @@ import React from 'react';
 import { FirebaseRequirements } from '../../interfaces/common';
 import FirebaseContext from '../../firebase/context';
 import FollowComponent from '../followComponent/FollowComponent';
+import FollowComponent from '../followComponent/FollowComponent';
 
 export default class UserInfo extends React.Component<any, any>{
 
@@ -52,26 +53,32 @@ export default class UserInfo extends React.Component<any, any>{
       
       this.setState({following: followingList});
     })
+
+    app.auth.onAuthStateChanged(user => {
+      this.forceUpdate();
+    });
   }
 
 
   render() {
     return (
       <div>
-        <table>
+        <table id="maintable">
           <tbody>
-            <td colSpan={2}>{this.state.userName}</td>
+            <td id="purpletheme" colSpan={2}>{this.state.userName}</td>
           </tbody>
           <tbody>
-            <td>
+            <td id="purpletheme">
               Followers: {this.state.followers.length}
             </td>
-            <td>
+            <td id="purpletheme">
               Following: {this.state.following.length}
             </td>
           </tbody>
           <tbody>
-            <FollowComponent profileID = {this.props.id} followers = {this.state.followers}/>
+            <td id="maintable" colSpan={2}>
+                  <FollowComponent profileID = {this.props.id} followers = {this.state.followers}/>
+            </td>
           </tbody>
         </table>
       </div>

@@ -51,6 +51,13 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: '100vh',
   },
+  image: {
+    backgroundImage: 'url(https://wallpapercave.com/wp/wp4408288.png)',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+    backgroundPosition: 'center',
+  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -59,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'red',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -76,7 +83,7 @@ function InternalLogin(props: any) {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} />
+      <Grid item xs={false} sm={4} md={7} className={classes.image}/>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>

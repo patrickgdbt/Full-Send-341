@@ -28,17 +28,20 @@ export default class Register extends React.Component {
     const dName = data.get('displayName') as string;
 
     const app = this.context as FirebaseRequirements;
-    app.auth.createUserWithEmailAndPassword(email, pass)
-      .then((user: firebase.auth.UserCredential) => {
-        app.db.ref('users')
-          .child(user.user!.uid)
-          .set({
-            displayName: dName,
-            newNotifs: 0,
-          });
 
-        user.user?.updateProfile({ displayName: dName });
-      });
+    if (/((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})/.test(pass)) {
+      app.auth.createUserWithEmailAndPassword(email, pass)
+        .then((user: firebase.auth.UserCredential) => {
+          app.db.ref('users')
+            .child(user.user!.uid)
+            .set({
+              displayName: dName,
+              newNotifs: 0,
+            });
+
+          user.user?.updateProfile({ displayName: dName });
+        });
+    }
   }
 
   render() {
@@ -80,7 +83,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'red',
   },
   form: {
     width: '100%', // Fix IE 11 issue.

@@ -39,7 +39,6 @@ export default class LoggedIn extends React.Component<NoProps, LoggedInState> {
 
         followingList.push(app.auth.currentUser?.uid);
 
-        console.log(snapshot);
 
         app.db.ref('posts').once('value', snapshot => {
           const root = snapshot.val();

@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
+      cursor: 'pointer',
     },
     header: {
       color: 'red',

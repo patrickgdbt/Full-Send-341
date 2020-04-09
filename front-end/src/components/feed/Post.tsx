@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles, Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, Avatar, IconButton, Typography, Grid } from '@material-ui/core';
 import clsx from 'clsx';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { IPost } from '../../interfaces/common';
 import CommentBox from '../comment/CommentBox';
+import LikeButton from './LikeButton';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -76,12 +76,7 @@ export default function Post(props: PostProps) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton
-            aria-label="like"
-            disabled={props.preview}
-          >
-            <FavoriteIcon />
-          </IconButton>
+          <LikeButton postData={props.postData} preview={props.preview} />
           <IconButton aria-label="comment"
             onClick={handleExpandClick}
             aria-expanded={expanded}

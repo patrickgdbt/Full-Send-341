@@ -30,20 +30,20 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
 
     app.auth.onAuthStateChanged(user => {
       app.db.ref('users/' + app.auth.currentUser?.uid + '/newNotifs')
-      .on('value', snapshot => {
-        this.setState({
-          newNotifs: snapshot.val(),
+        .on('value', snapshot => {
+          this.setState({
+            newNotifs: snapshot.val(),
+          });
         });
-      });
 
       app.db.ref('users/' + app.auth.currentUser?.uid + '/notifs')
-      .on('child_added', snapshot => {
-        const notifs = this.state.notifs;
-        notifs.push(snapshot.val());
-        this.setState({
-          notifs: notifs,
+        .on('child_added', snapshot => {
+          const notifs = this.state.notifs;
+          notifs.push(snapshot.val());
+          this.setState({
+            notifs: notifs,
+          });
         });
-      });
 
       this.forceUpdate();
     });
@@ -77,7 +77,7 @@ export default class NotificationsButton extends React.Component<NoProps, Notifi
   render() {
     return (
       <div>
-        <IconButton aria-label="show 17 new notifications" color="inherit" onClick={this.openDrawer}>
+        <IconButton aria-label="notifications" color="inherit" onClick={this.openDrawer}>
           <Badge badgeContent={this.state.newNotifs} color="secondary">
             <NotificationsIcon />
           </Badge>

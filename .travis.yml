@@ -7,6 +7,6 @@ cache:
 script:
   - cd front-end
   - npm install
-  - npm --passWithNoTests test
+  - npm test
 on:
   branch: master

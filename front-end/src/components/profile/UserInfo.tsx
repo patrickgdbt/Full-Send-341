@@ -2,30 +2,31 @@ import React from 'react';
 import { FirebaseRequirements } from '../../interfaces/common';
 import FirebaseContext from '../../firebase/context';
 import FollowButton from '../follow/FollowButton';
+import { Grid, Typography, Divider } from '@material-ui/core';
 
 export default class UserInfo extends React.Component<any, any>{
 
   constructor(props: any) {
     super(props);
-    this.state = { 
-      userName: 'Loading...', 
-      followers: [], 
-      following: [], 
+    this.state = {
+      userName: 'Loading...',
+      followers: [],
+      following: [],
       isFollwoing: false
     };
 
     this.updateUserName = this.updateUserName.bind(this);
   }
 
-  updateUserName(name: any){
-    this.setState({userName: name});
+  updateUserName(name: any) {
+    this.setState({ userName: name });
   }
 
-  updateButton(message: string){
-    this.setState({button: message});
+  updateButton(message: string) {
+    this.setState({ button: message });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const app = this.context as FirebaseRequirements;
     const userID = this.props.id;
 
@@ -40,7 +41,7 @@ export default class UserInfo extends React.Component<any, any>{
         followersList.push(child.val());
       });
 
-      this.setState({followers: followersList});
+      this.setState({ followers: followersList });
     })
 
     app.db.ref('users/' + userID + '/following').once('value').then(snapshot => {
@@ -49,8 +50,8 @@ export default class UserInfo extends React.Component<any, any>{
       snapshot.forEach((child: any) => {
         followingList.push(child.val());
       });
-      
-      this.setState({following: followingList});
+
+      this.setState({ following: followingList });
     })
 
     app.auth.onAuthStateChanged(user => {
@@ -61,26 +62,42 @@ export default class UserInfo extends React.Component<any, any>{
 
   render() {
     return (
-      <div>
-        <table id="maintable">
-          <tbody>
-            <td id="purpletheme" colSpan={2}>{this.state.userName}</td>
-          </tbody>
-          <tbody>
-            <td id="purpletheme">
-              Followers: {this.state.followers.length}
-            </td>
-            <td id="purpletheme">
-              Following: {this.state.following.length}
-            </td>
-          </tbody>
-          <tbody>
-            <td id="maintable" colSpan={2}>
-                  <FollowButton profileID = {this.props.id} followers = {this.state.followers}/>
-            </td>
-          </tbody>
-        </table>
-      </div>
+      <Grid
+        container
+        justify='center'
+        alignItems='center'
+        style={{
+          marginTop: '20px',
+          marginBottom: '20px',
+        }}
+      >
+        <Grid item xs={12} sm={6}>
+          <Grid container justify='center'
+            alignItems='center'>
+            <Grid item xs={12} sm={4}>
+              <Typography variant='h4'>
+                {this.state.userName}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Typography>
+                Followers: {this.state.followers.length}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Typography>
+                Following: {this.state.following.length}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FollowButton profileID={this.props.id} followers={this.state.followers} />
+            </Grid>
+            <Grid item style={{ marginTop: '20px' }} xs={12} sm={12}>
+              <Divider />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import FirebaseContext from '../../firebase/context';
 import { IPost, FirebaseRequirements, IComment } from '../../interfaces/common';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import Post from '../feed/Post';
 
 interface UserProps {
@@ -65,6 +65,7 @@ export default class ProfilePosts extends React.Component<UserProps, UserState>{
   render() {
     return (
       <Grid container direction='column' justify='center' alignItems='center'>
+        {this.state.posts.length === 0 && <Typography variant='h5'>This user has no posts</Typography>}
         {this.state.posts.map((postData, i, posts) => <Post key={i} postData={posts[posts.length - i - 1]} />)}
       </Grid>
     );

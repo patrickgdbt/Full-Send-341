@@ -3,9 +3,9 @@ import * as firebase from 'firebase'
 import FirebaseContext from '../../firebase/context';
 import { FirebaseRequirements } from '../../interfaces/common';
 import './follow.css';
+import { Button } from '@material-ui/core';
 
 export default class FollowButton extends React.Component<any, any> {
-
   constructor(props: any) {
     super(props);
 
@@ -76,8 +76,8 @@ export default class FollowButton extends React.Component<any, any> {
     });
   }
 
-  componentDidUpdate(prevProps: any){
-    if (prevProps.followers !== this.props.followers){
+  componentDidUpdate(prevProps: any) {
+    if (prevProps.followers !== this.props.followers) {
       this.followCheck(this.state.currentUser);
     }
   }
@@ -88,9 +88,17 @@ export default class FollowButton extends React.Component<any, any> {
         <FirebaseContext.Consumer>
           {app =>
             app?.auth.currentUser?.uid !== this.props.profileID &&
-            <button id="purplebutton" onClick={() => { this.changeFollowStatus() }} >
+            <Button
+              variant='contained'
+              fullWidth
+              style={{
+                backgroundColor: 'white',
+                position: 'inherit',
+              }}
+              onClick={() => { this.changeFollowStatus() }}
+            >
               {this.props.followers.includes(app?.auth.currentUser?.uid) ? "Unfollow" : "Follow"}
-            </button>
+            </Button>
           }
         </FirebaseContext.Consumer>
       </div>

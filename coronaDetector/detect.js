@@ -34,4 +34,6 @@ let tensor = tf.browser.fromPixels(image,3)
       det.forEach(function (p) {
     		{p.className
           p.probability.toFixed(6) //Displays Corona and probability of there being a corona in the picture
-    		});
+        }
+      });
+
